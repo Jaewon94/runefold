@@ -1,7 +1,20 @@
-node_modules/
+# Godot 4
+.godot/
+.import/
+*.translation
+# Unity (엔진 확정 전 대비)
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+# 공통
+export/
 dist/
-.vite/
 coverage/
 *.log
 .env*
 .DS_Store
+Thumbs.db
