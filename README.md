@@ -18,6 +18,7 @@
 | 게임 설계(정본) | [01 게임 설계](https://sworkspace-45084199.atlassian.net/wiki/spaces/RUNE/pages/8814593) — 사본: [docs/design.md](docs/design.md) |
 | 결정 장부 | [02 결정 장부](https://sworkspace-45084199.atlassian.net/wiki/spaces/RUNE/pages/8716299) — RUNE-DEC01~11 |
 | 개발 환경 현황 | [03 개발 환경](https://sworkspace-45084199.atlassian.net/wiki/spaces/RUNE/pages/8847361) |
+| 출시 로드맵 | [04 출시 로드맵](https://sworkspace-45084199.atlassian.net/wiki/spaces/RUNE/pages/8552481) — 사본: [docs/roadmap.md](docs/roadmap.md) |
 
 ## 지금까지 정한 것 (요약, 상세는 결정 장부)
 
@@ -59,9 +60,10 @@
 
 - 원격: GitHub `Jaewon94/runefold`(비공개), 전용 deploy key 로 Home1 에서 push 한다.
 - 맥 사본: 읽기·문서 수정용. 코드 작업은 Home1 세션이 맡는다.
-- Home1 에 게임 전용 Windows 일반 계정과 전용 WSL(Ubuntu 24.04)을 만드는 중이다(Windows 드라이브 마운트·interop
-  차단, 화면 없음). 임시로 다른 계정의 WSL 에 작업 사본이 있고, 전용 환경이 끝나면 옮긴다. 진행 현황은 Confluence
-  「03 개발 환경」에 둔다.
+- Home1 에 게임 전용 Windows 일반 계정 `game` 과 전용 WSL `game-dev`(Ubuntu 24.04)를 만들었다(Windows 드라이브
+  마운트·interop 차단, 화면 없음). Orca 서버, 전용 deploy key, 클론, Claude Code 설치까지 끝났고 Claude 로그인(사용자가 직접)과
+  다른 계정의 임시 사본 정리가 남았다. 진행 현황은 Confluence 「03 개발 환경」에 둔다.
+- 계획·문서는 맥에서, 코드 작업은 Home1 `game-dev` 에서 한다.
 - 개발·헤드리스 시험·Windows 내보내기는 WSL 에서 하고, 플레이 확인은 Home1 모니터에서 한다(exe 를 공용 폴더로
   복사해 모니터에 로그인된 계정에서 실행).
 - 시스템 설치 없이 사용자 폴더 안 포터블 실행 파일만 쓴다. 회사 자료 경로는 건드리지 않는다.
@@ -70,7 +72,8 @@
 
 - 합성 자동/수동, 소대 정원과 대기석 수, 전설 유닛 존재 여부, 단계별 능력치 증가폭
 - 노드 수와 전투 길이(M3 에서 실측), 합성 빈도(M4 에서 실측)
-- 참고 게임 분석 대상 목록과 결과 정본 위치(REA 세션에서 사용자 답 대기)
+- 참고 게임 분석: 1단계(공개 자료)는 완료, 2단계(플레이 관찰)는 보류, 3a 는 2단계 뒤로 미룸. 대상 목록과 결과 정본 위치는 사용자 답 대기
+- 출시 목표 시기(현재 해석: 마감 없음, 품질 우선), 세무·사업자 상담 시기(현재 해석: 2026년 말) — 사용자 확인 대기
 - 이름 확정, 등급별 출현 확률과 가격(M3)
 
 ## 저장소 구성
@@ -78,4 +81,6 @@
 ```
 README.md        이 문서
 docs/design.md   게임 설계 사본(정본은 Confluence 01 게임 설계)
+docs/roadmap.md  출시 로드맵 사본(정본은 Confluence 04 출시 로드맵)
+docs/reference-research/  참고작 1단계 공개 자료 조사(우리 말 요약, Jira RUNE-8)
 ```
