@@ -18,3 +18,9 @@ coverage/
 .env*
 .DS_Store
 Thumbs.db
+# 비밀·로컬 설정
+export_credentials.cfg
+.godot/export_credentials.cfg
+*.pem
+id_*
+.claude/settings.local.json
