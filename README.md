@@ -19,6 +19,7 @@
 | 결정 장부 | [02 결정 장부](https://sworkspace-45084199.atlassian.net/wiki/spaces/RUNE/pages/8716299) — RUNE-DEC01~11 |
 | 개발 환경 현황 | [03 개발 환경](https://sworkspace-45084199.atlassian.net/wiki/spaces/RUNE/pages/8847361) |
 | 출시 로드맵 | [04 출시 로드맵](https://sworkspace-45084199.atlassian.net/wiki/spaces/RUNE/pages/8552481) — 사본: [docs/roadmap.md](docs/roadmap.md) |
+| 종이 프로토타입 | [05 종이 프로토타입](https://sworkspace-45084199.atlassian.net/wiki/spaces/RUNE/pages/9175071) — 사본: [docs/paper-prototype.md](docs/paper-prototype.md) |
 
 ## 지금까지 정한 것 (요약, 상세는 결정 장부)
 
@@ -88,5 +89,6 @@
 README.md        이 문서
 docs/design.md   게임 설계 사본(정본은 Confluence 01 게임 설계)
 docs/roadmap.md  출시 로드맵 사본(정본은 Confluence 04 출시 로드맵)
+docs/paper-prototype.md  종이 프로토타입 규칙·카드·시나리오(정본은 Confluence 05)
 docs/reference-research/  참고작 1단계 공개 자료 조사(우리 말 요약, Jira RUNE-8)
 ```
