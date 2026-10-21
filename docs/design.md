@@ -84,6 +84,7 @@ Steamworks 연동(업적·클라우드 저장·Steam 입력)과 Steam 상점 요
 
 ## 기술안
 - **엔진: Godot 4 확정**(2026-10-20 사용자 결정). 정확한 버전과 다운로드 URL 은 설치 시점에 공식 사이트에서 확인하고 이 문서에 확인일과 함께 남긴다.
+  **설치 기록(2026-10-21):** `4.7.2.stable.official.ed1daf0bf`, 맥 사용자 폴더 `~/tools/godot/4.7.2`, 출처 https://github.com/godotengine/godot-builds/releases/tag/4.7.2-stable, `Godot_v4.7.2-stable_macos.universal.zip` 의 SHA-512 가 같은 릴리스의 `SHA512-SUMS.txt` 와 일치(별도 서명은 확인하지 않음).
 - Steam 연동은 GodotSteam, 시험은 GUT 또는 GdUnit4, 언어는 GDScript(C# 은 .NET SDK 가 필요해 보류).
 - **규칙 엔진은 렌더링과 분리**한다. 엔진 API 에 기대지 않는 순수 코드, 시드 고정 난수, 결정론적 시뮬레이션,
   화면 없이 헤드리스 시험으로 전투·합성·유물 규칙을 검증한다.
