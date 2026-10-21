@@ -10,14 +10,14 @@
 ## 지금 (2026-10-21)
 
 - 단계: A 사전 검증(M0 전). 다음 관문: G0 종이 프로토타입 판정(RUNE-41).
-- 사용자가 할 일: ① 종이 프로토타입 기본형 3판([docs/paper-prototype.md](docs/paper-prototype.md)) ② 상표 조회 KIPRIS·USPTO(RUNE-34) ③ Home1 game-dev 의 Claude 로그인(RUNE-12) ④ 세무 상담(올해 말, RUNE-33)
+- 사용자가 할 일: ① 종이 프로토타입 기본형 3판([docs/paper-prototype.md](docs/paper-prototype.md)) ② 상표 조회 KIPRIS·USPTO(RUNE-34) ③ 세무 상담(올해 말, RUNE-33)  — Home1 Claude 로그인(RUNE-12)은 Home1 합류 때
 - 에이전트가 하는 일: 해상도 목업(RUNE-42), 합성 빈도 계산(RUNE-24, 코드 작성 승인 필요)
 - 답을 기다리는 질문: 아래 「아직 정해지지 않은 것」과 검토 결과 구조 결정(정본 규칙·개발 장소·일정 구조·틱 카운터)
-- 막힌 것: game-dev WSL 자동 종료(RUNE-69) — 개발 장소 결정 필요
+- 막힌 것: 없음. M0 는 맥에서 시작한다. Home1 상시 가동(WSL 자동 종료, RUNE-69)은 보류
 
 ## 정본과 문서
 
-이슈·문서의 정본은 Jira 와 Confluence 이고, 이 저장소의 문서는 사본이다. 어긋나면 Confluence 쪽이 맞다.
+이슈·문서의 정본은 Jira 와 Confluence 이고, 이 저장소의 문서는 사본이다. 어긋나면 Confluence 쪽이 맞다. 사본 문서 첫 줄에 정본 페이지와 마지막 동기화일을 적는다(2026-10-21 결정).
 
 | 무엇 | 어디 |
 |---|---|
@@ -75,13 +75,12 @@
 ## 개발 환경
 
 - 원격: GitHub `Jaewon94/runefold`(비공개), 전용 deploy key 로 Home1 에서 push 한다.
-- 맥 사본: 읽기·문서 수정용. 코드 작업은 Home1 세션이 맡는다.
+- M0 는 맥에서 로컬 Godot 로 시작한다(2026-10-21 결정). Home1 `game-dev` 는 상시 가동 환경(RUNE-69)이 준비되면 합류한다.
 - Home1 에 게임 전용 Windows 일반 계정 `game` 과 전용 WSL `game-dev`(Ubuntu 24.04)를 만들었다(Windows 드라이브
   마운트·interop 차단, 화면 없음). Orca 서버, 전용 deploy key, 클론, Claude Code 설치까지 끝났고 Claude 로그인(사용자가 직접)과
   다른 계정의 임시 사본 정리가 남았다. 진행 현황은 Confluence 「03 개발 환경」에 둔다.
-- 계획·문서는 맥에서, 코드 작업은 Home1 `game-dev` 에서 한다.
-- 개발·헤드리스 시험·Windows 내보내기는 WSL 에서 하고, 플레이 확인은 Home1 모니터에서 한다(exe 를 공용 폴더로
-  복사해 모니터에 로그인된 계정에서 실행).
+- 헤드리스 시험·Windows 내보내기는 처음에는 맥에서, Home1 합류 뒤에는 WSL 에서도 한다. Windows 실행 확인은 Home1 모니터에서 한다(exe 를
+  공용 폴더로 복사해 모니터에 로그인된 계정에서 실행).
 - 시스템 설치 없이 사용자 폴더 안 포터블 실행 파일만 쓴다. 회사 자료 경로는 건드리지 않는다.
 
 ## 아직 정해지지 않은 것
