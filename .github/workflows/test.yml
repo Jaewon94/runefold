@@ -1,0 +1,36 @@
+name: test
+
+# Headless GUT test suite. A green run is the merge condition for code changes (RUNE-43).
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+env:
+  GODOT_VERSION: 4.7.2-stable
+  GODOT_ZIP: Godot_v4.7.2-stable_linux.x86_64.zip
+
+jobs:
+  gut:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Download Godot and verify SHA-512
+        run: |
+          set -euo pipefail
+          base="https://github.com/godotengine/godot-builds/releases/download/${GODOT_VERSION}"
+          mkdir -p "$RUNNER_TEMP/godot" && cd "$RUNNER_TEMP/godot"
+          curl -fsSL -O "$base/${GODOT_ZIP}"
+          curl -fsSL -O "$base/SHA512-SUMS.txt"
+          grep " ${GODOT_ZIP}\$" SHA512-SUMS.txt | sha512sum -c -
+          unzip -q "${GODOT_ZIP}"
+          chmod +x Godot_v4.7.2-stable_linux.x86_64
+          echo "GODOT_BIN=$RUNNER_TEMP/godot/Godot_v4.7.2-stable_linux.x86_64" >> "$GITHUB_ENV"
+
+      - name: Run headless tests
+        run: ./scripts/run_tests.sh
