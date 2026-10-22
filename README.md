@@ -67,14 +67,14 @@
 
 - 작업은 Jira `RUNE` 이슈 단위다. 브랜치는 `main` + 작업 브랜치 `<type>/RUNE-<n>-<slug>`.
 - 커밋: `<type>(<scope>): 한국어 요약 50자 이내`, 본문에 `Refs RUNE-n`, AI 작성 시 끝에 `Co-Authored-By:` 줄.
-- 비밀 값(비밀번호·키·토큰)과 `.env*` 는 저장소와 문서에 올리지 않는다.
+- 비밀 값(비밀번호·키·토큰)과 `.env*` 는 저장소와 문서에 올리지 않는다. **저장소가 공개이므로** 개인정보·회사 관련 내부 정보·계정명도 쓰지 않고, 커밋 작성자 이메일은 GitHub noreply 주소를 쓴다(이전 커밋에는 개인 이메일이 남아 있음).
 - 참고 게임(XCOM·라피스·아르카나 택틱스·슬레이 더 스파이어) 분석은 별도 REA 프로젝트에서 한다. 이 저장소에는
   **우리 말로 요약한 결론만** 두고, 상대 게임의 코드 조각·에셋·바이너리·디컴파일 출력은 올리지 않는다.
 - 완료는 시험·실행으로만 선언한다. 안 돌렸으면 NOT RUN 이다.
 
 ## 개발 환경
 
-- 원격: GitHub `Jaewon94/runefold`(비공개), 전용 deploy key 로 Home1 에서 push 한다.
+- 원격: GitHub `Jaewon94/runefold`(**공개**, 2026-10-22 전환), 전용 deploy key 로 Home1 에서 push 한다. CI 는 GitHub 호스팅 러너(공개 저장소 무료)이고 main 은 시험(`gut`) 통과가 병합 조건이다.
 - M0 는 맥에서 로컬 Godot 로 시작한다(2026-10-21 결정). Home1 `game-dev` 는 상시 가동 환경(RUNE-69)이 준비되면 합류한다.
 - Home1 에 게임 전용 Windows 일반 계정 `game` 과 전용 WSL `game-dev`(Ubuntu 24.04)를 만들었다(Windows 드라이브
   마운트·interop 차단, 화면 없음). Orca 서버, 전용 deploy key, 클론, Claude Code 설치까지 끝났고 Claude 로그인(사용자가 직접)과

@@ -92,7 +92,7 @@ Steamworks 연동(업적·클라우드 저장·Steam 입력)과 Steam 상점 요
   이진 에셋이 늘면 git LFS 도입을 검토한다.
 
 ## 개발 환경
-- 원격 저장소: GitHub `Jaewon94/runefold`(비공개). **M0 는 맥에서 로컬 Godot 로 시작한다**(2026-10-21 결정). Home1 `game-dev` 는 상시 가동 환경이 준비되면 합류한다.
+- 원격 저장소: GitHub `Jaewon94/runefold`(공개, 2026-10-22 전환). **M0 는 맥에서 로컬 Godot 로 시작한다**(2026-10-21 결정). Home1 `game-dev` 는 상시 가동 환경이 준비되면 합류한다.
 - 개발 환경은 Home1 의 **게임 전용 Windows 일반 계정 `game`**(관리자 아님)과 그 전용 WSL `game-dev`(Ubuntu 24.04)이다. WSL 은 Windows 드라이브 마운트와 interop 이 꺼져 있고 화면(DISPLAY)이 없다. Orca 서버, deploy key, 클론, Claude Code 설치까지 끝났고 현재 상태는 Confluence 「03 개발 환경」에 둔다.
 - 임시로 Home1 의 다른 계정 WSL 에 작업 사본이 있다(정리 대상, 현황은 Confluence 03).
 - 헤드리스 시험·Windows 내보내기는 처음에는 맥에서 하고(Godot 4.5 이후 Wine 불필요), Home1 `game-dev` 합류 뒤에는 WSL 에서도 한다. Windows 실행 확인은 Home1 모니터에서 하며, 내보낸 exe 를 모든 계정이 읽을 수 있는 폴더로 복사해 모니터에 로그인된 계정에서 실행한다.
@@ -110,4 +110,4 @@ Steamworks 연동(업적·클라우드 저장·Steam 입력)과 Steam 상점 요
 ## 작업 규칙 (가벼운 버전)
 - 브랜치는 `main` + 작업 브랜치. 커밋은 `<type>(<scope>): 한국어 요약`.
 - 작업은 Jira `RUNE` 이슈 단위로 한다. 브랜치는 `<type>/RUNE-<n>-<slug>`, 커밋 본문에 `Refs RUNE-n`.
-- 원격은 GitHub(비공개)이며 CI 는 GitHub Actions 로 M0 에서 구성한다(RUNE-43).
+- 원격은 GitHub(공개)이며 CI 는 GitHub Actions 의 무료 GitHub 호스팅 러너로 돈다. main 은 시험(`gut`) 통과가 병합 조건이다(RUNE-43).
