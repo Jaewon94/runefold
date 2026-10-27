@@ -9,7 +9,7 @@
 
 ## 지금 (2026-10-21)
 
-- 단계: A 사전 검증(M0 전). 다음 관문: G0 종이 프로토타입 판정(RUNE-41).
+- 단계: **계획·문서 단계(코드 작업 보류, 사용자 2026-10-27)**. 다음 관문: G0 종이 프로토타입 판정(RUNE-41). 진행 중인 검토: 플랫폼 방향(웹 우선 검토, [docs/platform-direction.md](docs/platform-direction.md)), EGM 시험 계획([docs/egm-trial.md](docs/egm-trial.md)), Harness² 준비 계획([docs/harness2-plan.md](docs/harness2-plan.md)).
 - 사용자가 할 일: ① 종이 프로토타입 기본형 3판([docs/paper-prototype.md](docs/paper-prototype.md)) ② 상표 조회 KIPRIS·USPTO(RUNE-34) ③ 세무 상담(올해 말, RUNE-33)  — Home1 Claude 로그인(RUNE-12)은 Home1 합류 때
 - 에이전트가 하는 일: 해상도 목업(RUNE-42), 합성 빈도 계산(RUNE-24, 코드 작성 승인 필요)
 - 답을 기다리는 질문: 아래 「아직 정해지지 않은 것」과 검토 결과 구조 결정(정본 규칙·개발 장소·일정 구조·틱 카운터)
@@ -98,5 +98,7 @@ README.md        이 문서
 docs/design.md   게임 설계 사본(정본은 Confluence 01 게임 설계)
 docs/roadmap.md  출시 로드맵 사본(정본은 Confluence 04 출시 로드맵)
 docs/paper-prototype.md  종이 프로토타입 규칙·카드·시나리오(정본은 Confluence 05)
+docs/platform-direction.md  플랫폼 방향 검토(웹 우선, 도집사 연동)
+docs/egm-trial.md, docs/harness2-plan.md  EGM 시험 사전 등록, Harness² 준비 계획
 docs/reference-research/  참고작 1단계 공개 자료 조사(우리 말 요약, Jira RUNE-8)
 ```

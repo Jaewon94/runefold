@@ -79,7 +79,7 @@
 - 에셋 라이선스는 받을 때 출처 URL·확인일을 기록한다.
 
 ## 목표 플랫폼
-Steam 출시용 네이티브 PC 게임(Windows 우선, Steam Deck 고려). 웹 게임이 아니다.
+Steam 출시용 네이티브 PC 게임(Windows 우선, Steam Deck 고려). **(2026-10-27) 웹 게임 방향을 우선 검토 중이며 불가하면 이 방향을 유지한다**(DEC50 대기, docs/platform-direction.md).
 Steamworks 연동(업적·클라우드 저장·Steam 입력)과 Steam 상점 요건(캡슐 이미지·트레일러)이 필요하다.
 
 ## 기술안
