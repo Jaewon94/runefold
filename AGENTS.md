@@ -31,6 +31,7 @@ Harness² 가 개선하는 "하네스"의 일부이므로, 바꿀 때는 이유�
 - 엔진: Godot 4.7.2, GDScript(정적 타입 표기). Steam 연동은 M5b 이후 GodotSteam.
 - 규칙 엔진은 렌더링과 분리하고 화면 없이 헤드리스로 시험한다. 규칙 코드는 `godot/game/` 아래에 둔다.
 - **엔진 난수 금지.** `randi`, `randf`, `shuffle`, `pick_random` 등은 쓰지 않고 `godot/game/rng/seeded_rng.gd` 의 `SeededRng` 만 쓴다.
+  이유: 엔진 난수는 실행마다·엔진 버전마다 달라서, 같은 시드로 같은 판을 재현하는 결정론이 깨진다.
   감시 시험 `godot/tests/unit/test_no_engine_rng.gd` 가 `res://game` 을 검사한다.
 - 시험: `scripts/run_tests.sh` (헤드리스 GUT, 종료 코드 0 = 통과). `GODOT_BIN` 으로 Godot 경로를 바꾼다.
 - 내보내기: `scripts/export_windows.sh` (Windows exe, 내보내기 템플릿 필요).
