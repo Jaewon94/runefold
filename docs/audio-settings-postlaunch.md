@@ -1,4 +1,4 @@
-> 정본: Confluence RUNE 스페이스 (페이지 미등록, RUNE-49·50·51 완료 시 등록 예정), 마지막 동기화일 2026-10-29
+> 정본: Confluence RUNE 스페이스 (https://sworkspace-45084199.atlassian.net/wiki/spaces/RUNE/pages/13828183), 마지막 동기화일 2026-10-30
 
 # 오디오 뼈대 · 설정 메뉴 · 출시 후 패치 계획 (RUNE-49·50·51)
 

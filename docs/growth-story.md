@@ -1,4 +1,4 @@
-> 정본: Confluence RUNE 스페이스 (페이지 미등록, RUNE-72·73 완료 시 등록 예정), 마지막 동기화일 2026-10-30
+> 정본: Confluence RUNE 스페이스 (https://sworkspace-45084199.atlassian.net/wiki/spaces/RUNE/pages/13828167), 마지막 동기화일 2026-10-30
 
 # 단 성장 설계 · 막 스토리 연출 범위 (RUNE-72 · RUNE-73)
 
