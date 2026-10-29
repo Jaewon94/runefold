@@ -1,4 +1,4 @@
-> 정본: Confluence RUNE 스페이스 (페이지 미등록, RUNE-84 완료 시 등록 예정), 마지막 동기화일 2026-10-29
+> 정본: Confluence RUNE 스페이스 (https://sworkspace-45084199.atlassian.net/wiki/spaces/RUNE/pages/13565954/19), 마지막 동기화일 2026-10-29
 
 # 캐릭터 아트 방식 비교 시험 계획 (RUNE-84)
 
