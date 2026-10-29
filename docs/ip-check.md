@@ -1,4 +1,4 @@
-> 정본: Confluence RUNE 스페이스 (페이지 미등록, RUNE-85 완료 시 등록 예정), 마지막 동기화일 2026-10-29
+> 정본: Confluence RUNE 스페이스 (https://sworkspace-45084199.atlassian.net/wiki/spaces/RUNE/pages/13959169), 마지막 동기화일 2026-10-30
 
 # 직업 로스터 지식재산 점검 (RUNE-85)
 
