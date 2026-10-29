@@ -24,3 +24,5 @@ export_credentials.cfg
 *.pem
 id_*
 .claude/settings.local.json
+# EGM 검토 산출물
+.egm/
