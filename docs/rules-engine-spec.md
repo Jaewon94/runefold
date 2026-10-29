@@ -1,4 +1,4 @@
-정본: Confluence(미등재, RUNE-82 로 신설 예정), 마지막 동기화일 2026-10-29
+> 정본: Confluence RUNE 스페이스 (페이지 미등록, RUNE-82 완료 시 등록 예정), 마지막 동기화일 2026-10-29
 
 # 규칙 엔진 명세 (초안 v0.1, 2026-10-29)
 
@@ -80,7 +80,9 @@ Rules.preview(state: BattleState, action: Action) -> Preview     # 읽기 전용
 
 ### 2-4. 결과(Event) [제안]
 사전 `{ "t": 종류, ...필드 }`. 목록 순서가 곧 일어난 순서이며 결정론의 일부다(같은 입력 → 같은 목록·같은 순서).
-`turn_started, cards_drawn, deck_shuffled, energy_set, unit_moved, move_cancelled, moves_locked, card_played, energy_spent, hit_rolled{roll, need, hit}, damage_dealt{target, raw, shield_absorbed, defense_reduced, final, hp_after}, shield_gained, shield_expired, healed, pushed, push_blocked, unit_downed, intent_set, intent_changed, enemy_acted, battle_won, battle_lost, action_rejected{reason}`.
+`turn_started, cards_drawn, deck_shuffled, energy_set, unit_moved, move_cancelled, moves_locked, card_played, energy_spent, hit_rolled{roll, need, hit}, damage_dealt{target, raw, shield_absorbed, defense_reduced, final, hp_after}, shield_gained, shield_expired, healed, pushed, push_blocked, unit_downed, unit_perma_dead{unit_id, side}, intent_set, intent_changed, enemy_acted, battle_won, battle_lost, action_rejected{reason}`.
+
+> `unit_perma_dead` 는 `unit_downed` 직후 반드시 따라온다. 아군이면 런에서 영구 손실, 적이면 격자에서 제거된다(9절). 이 이벤트의 순서가 결정론의 일부다.
 
 **E-01** 상태 S 에서 기사가 이동하지 않은 상태로 `move(knight, (9,0))` → `[action_rejected{reason: out_of_bounds}]`, 반환 상태는 S 와 같고 `S.rng` 도 같다.
 
@@ -98,6 +100,8 @@ Rules.preview(state: BattleState, action: Action) -> Preview     # 읽기 전용
 **E-03** 장애물 (1,0)·(1,1)·(1,2), 기사 (0,0) 이동 3. `(2,0)` 까지 최단 경로는 (0,0)→(0,3)→(2,3)→(2,0) 으로 길이 8 > 3 → `out_of_move`(맨해튼 거리는 2 지만 경로로 판정).
 **E-04** 기사 (0,0)→(1,0) 이동, 레인저 이동, 기사가 `베기` 사용 → `moves_locked`. 이어서 `cancel_move(ranger)` → `action_rejected{moves_locked}`.
 **E-05** 덱 0장, 버린 카드 12장, 내 턴 시작 → `deck_shuffled`(deck 스트림 사용) 뒤 5장 뽑기. 손패 5, 덱 7.
+
+**덱 고갈 시 자동 섞기 규칙 [문서](paper 21~24) [제안 보완]:** 뽑기가 필요한 모든 시점(턴 시작·사망 유닛 카드 처리)에서 `draw_pile` 이 비어 있으면, 뽑기 전에 `discard_pile` 전체를 `deck` 스트림으로 섞어 `draw_pile` 로 옮기고 `deck_shuffled` 이벤트를 낸다. 섞고 나면 `discard_pile` 은 비어 있다. `discard_pile` 도 비어 있으면 섞기 없이 `draw_pile` 은 그대로 빈 상태다(E-27 참고). 이 규칙은 한 번의 뽑기 단계 안에서 최대 1회만 일어나며, 섞기 후에도 카드가 없으면 `draw_stopped` 없이 빈 손패를 허용한다.
 
 ## 4. 명중
 
@@ -172,6 +176,7 @@ hp = max(0, hp - final)
 - **[문서]** 적 전멸 = 승리, 아군 전멸 = 패배(paper 16; 패배 조건은 design 35 "가정"). 변형 C: 주 지휘관이 쓰러지면 즉시 패배(paper 97).
 - **판정 시점 [제안]:** 피해 하나를 처리해 `unit_downed` 가 나올 때마다 바로 판정한다. 끝나면 `battle_won`/`battle_lost` 를 내고 `phase` 를 바꾸며, 남은 효과(예: 화염구의 남은 주변 피해)는 **끝까지 처리한 뒤** 판정한다(한 카드 안은 원자적). 그 뒤 모든 행동은 `battle_over` 로 거부. 근거: 한 카드의 결과가 판정 시점 때문에 반쯤 잘리지 않게 한다.
 - **동시 전멸 [제안]:** 한 카드로 마지막 적과 마지막 아군이 함께 쓰러지면 **패배**. 근거: 아군이 하나도 없으면 런을 이어 갈 수 없다.
+- **아군 전원 사망 시 즉시 패배 [제안]:** `unit_perma_dead` 이벤트가 발생한 직후, 살아 있는 아군 유닛(`downed == false`, `side == ally`)이 하나도 없으면 한 카드의 남은 효과와 무관하게 즉시 `battle_lost` 를 내고 `phase` 를 `lost` 로 바꾼다. 이후 모든 행동은 `battle_over` 로 거부한다. 이 검사는 적의 `unit_perma_dead` 에서는 하지 않는다(적 전멸은 `battle_won` 으로 처리). 근거: 아군이 전멸했으면 남은 카드 효과를 이어 처리할 필요가 없고, 동시 전멸 시 패배 우선순위(위 항목)와 일관된다.
 - 변형 T(틱 카운터)·V2·V3 은 `config` 플래그로만 켠다 [문서](roadmap 297 "기본에서 제외").
 
 **E-19** 적이 고블린 1(HP 2) 남음, 기사 `베기` 명중 → `damage_dealt`, `unit_downed`, `battle_won`. 이어서 `play_card` → `action_rejected{battle_over}`.
@@ -206,6 +211,8 @@ hp = max(0, hp - final)
 
 **E-26** 덱 위 순서 [베기(기사 사망), 사격, …], 기사 외 기사 없음 → 베기 버림, 사격 손패. 에너지 변화 없음.
 **E-27** 내 턴 시작에 덱 2장·버린 카드 0장이고 둘 다 쓰러진 기사의 카드(한도 2) → 1장 뽑아 버림, 1장 뽑아 버림 → 버린 횟수 2 = 한도 → `draw_stopped`, 손패 0, 섞기 없음.
+
+**창고 유닛과 전투의 관계 [제안]:** 창고에 맡긴 유닛(`stashed: true`)은 출전 소대에 없으므로 전투 격자에 배치되지 않는다. `battle_lost`/`battle_won` 판정 시 창고 유닛의 생사는 반영하지 않는다. 전투 중 발생한 `unit_perma_dead` 가 창고 유닛에 영향을 주지 않는다. 근거: 창고는 "그 런에서 쓰지 않는다"(difficulty-plan 42)이며, 합성 재료도 될 수 없다(10-1).
 
 ## 10. 합성 상태 전이 (승급·조합식)
 
@@ -336,6 +343,6 @@ hp = max(0, hp - final)
 
 ## 15. 열린 질문과 다른 문서 연동
 
-- 사용자 판단: 막이 전부 흡수해도 최소 1(5절), 적 쓰러짐 처리(9절), 승급·크로스오버의 직업 태그 계승(10절, design 36 "직업 카드는 해당 직업만"의 해석), 새 유닛 획득 시 덱 카드 규칙(10-2), 동시 전멸 패배(7절), 되돌리기 범위(11절, RUNE-46), 전투 중 저장 방식(12절, RUNE-46).
+- 사용자 판단 **[M1 전 결정 필요]**: 막이 전부 흡수해도 최소 1(5절) **[M1 전 결정 필요]**, 적 쓰러짐 처리(9절) **[M1 전 결정 필요]**, 승급·크로스오버의 직업 태그 계승(10절, design 36 "직업 카드는 해당 직업만"의 해석), 새 유닛 획득 시 덱 카드 규칙(10-2), 동시 전멸 패배(7절) **[M1 전 결정 필요]**, 되돌리기 범위(11절, RUNE-46), 전투 중 저장 방식(12절, RUNE-46).
 - 미정으로 남김: 런 사이·전투 사이 HP 이월, 장비 체계(유물 형태), 카드 Lv 상한, ★5~★7 재료 소비 방식, 크로스오버의 승급 계보, 변형 T·C·V2·V3 채택.
 - 이 문서는 다른 문서를 고치지 않았다. 연동이 필요한 곳은 RUNE-82 보고에 적는다.
