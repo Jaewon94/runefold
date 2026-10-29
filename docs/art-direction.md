@@ -1,4 +1,4 @@
-> 정본: Confluence RUNE 스페이스 (페이지 미등록, RUNE-70 완료 시 등록 예정), 마지막 동기화일 2026-10-29
+> 정본: Confluence RUNE 스페이스 (https://sworkspace-45084199.atlassian.net/wiki/spaces/RUNE/pages/13598721/18), 마지막 동기화일 2026-10-29
 
 # Runefold 아트 방향 — 네오 다크세이버 스타일 (초안 v0.1)
 

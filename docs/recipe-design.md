@@ -1,4 +1,4 @@
-> 정본: Confluence RUNE 스페이스 (페이지 미등록, RUNE-67 완료 시 등록 예정), 마지막 동기화일 2026-10-29
+> 정본: Confluence RUNE 스페이스 (https://sworkspace-45084199.atlassian.net/wiki/spaces/RUNE/pages/13565970/17), 마지막 동기화일 2026-10-29
 
 # 조합식 레시피표 설계 (초안, RUNE-67)
 
