@@ -18,21 +18,16 @@
       "*.pem": "deny",
       "*export_credentials.cfg": "deny"
     },
+    "edit": "allow",
+    "task": "allow",
+    "todowrite": "allow",
+    "skill": "allow",
+    "webfetch": "allow",
     "bash": {
-      "*": "ask",
-      "git status*": "allow",
-      "git diff*": "allow",
-      "git log*": "allow",
-      "git branch*": "allow",
-      "git rev-parse*": "allow",
-      "git -C * rev-parse*": "allow",
-      "git -C * log*": "allow",
-      "git -C * status*": "allow",
-      "ls*": "allow",
-      "wc*": "allow",
-      "scripts/run_tests.sh": "allow",
+      "*": "allow",
       "git push --force*": "deny",
-      "rm -rf*": "deny"
+      "rm -rf*": "deny",
+      "git push origin main*": "deny"
     }
   }
 }
