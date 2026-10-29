@@ -24,7 +24,7 @@
 | 이슈 | [Jira RUNE](https://sworkspace-45084199.atlassian.net/jira/software/projects/RUNE/boards) — 에픽 RUNE-1~7·9·38~40 = 마일스톤(M0~M6 와 M5a·M5b·M5.5·M5.9), RUNE-10 = 행정·출시 준비 |
 | 스페이스 홈 | [Confluence RUNE](https://sworkspace-45084199.atlassian.net/wiki/spaces/RUNE/overview) |
 | 게임 설계(정본) | [01 게임 설계](https://sworkspace-45084199.atlassian.net/wiki/spaces/RUNE/pages/8814593) — 사본: [docs/design.md](docs/design.md) |
-| 결정 장부 | [02 결정 장부](https://sworkspace-45084199.atlassian.net/wiki/spaces/RUNE/pages/8716299) — RUNE-DEC01~11 |
+| 결정 장부 | [02 결정 장부](https://sworkspace-45084199.atlassian.net/wiki/spaces/RUNE/pages/8716299) — RUNE-DEC01 이상 (Confluence 결정 장부 참조) |
 | 개발 환경 현황 | [03 개발 환경](https://sworkspace-45084199.atlassian.net/wiki/spaces/RUNE/pages/8847361) |
 | 출시 로드맵 | [04 출시 로드맵](https://sworkspace-45084199.atlassian.net/wiki/spaces/RUNE/pages/8552481) — 사본: [docs/roadmap.md](docs/roadmap.md) |
 | 종이 프로토타입 | [05 종이 프로토타입](https://sworkspace-45084199.atlassian.net/wiki/spaces/RUNE/pages/9175071) — 사본: [docs/paper-prototype.md](docs/paper-prototype.md) |
@@ -33,9 +33,9 @@
 
 | 결정 | 상태 |
 |---|---|
-| Steam 출시용 네이티브 PC 게임 | 확정 |
+| Steam 출시용 네이티브 PC 게임 (DEC50 검토 중, 웹 우선 대안 검토 병행) | 확정 |
 | 엔진 Godot 4(GDScript, Steam 연동은 GodotSteam). 버전·URL 은 설치 시점에 공식 사이트에서 확인해 기록 | 확정 |
-| 승급은 **항상 같은 것 3개 → 1개**(유닛·카드), 단계 1~3, 최대까지 같은 것 9개 | 확정 |
+| 승급은 **항상 같은 것 3개 → 1개**(유닛·카드), 단계 1~7(★1~★7) | 확정 |
 | 조합식: 서로 다른 재료 2~3개 → 새것(고정 레시피표), 유닛·카드 대상, 결과 ★1 | 잠정(G3 에서 비교) |
 | 등급 4단계: 일반·고급·희귀·전설(합성해도 등급은 안 바뀜) | 잠정 |
 | 2D 도트, 기준 해상도 640×360 정수 배율, 타일 32px | 도트는 확정, 해상도·타일은 잠정(2026-10-21 목업으로 변경, RUNE-20 에서 32px 에셋 확인 후 확정) |
@@ -74,17 +74,11 @@
 
 ## 개발 환경
 
-- 원격: GitHub `Jaewon94/runefold`(**공개**, 2026-10-22 전환), 전용 deploy key 로 Home1 에서 push 한다. CI 는 GitHub 호스팅 러너(공개 저장소 무료)이고 main 은 시험(`gut`) 통과가 병합 조건이다.
-- M0 는 맥에서 로컬 Godot 로 시작한다(2026-10-21 결정). Home1 `game-dev` 는 상시 가동 환경(RUNE-69)이 준비되면 합류한다.
-- Home1 에 게임 전용 Windows 일반 계정 `game` 과 전용 WSL `game-dev`(Ubuntu 24.04)를 만들었다(Windows 드라이브
-  마운트·interop 차단, 화면 없음). Orca 서버, 전용 deploy key, 클론, Claude Code 설치까지 끝났고 Claude 로그인(사용자가 직접)과
-  다른 계정의 임시 사본 정리가 남았다. 진행 현황은 Confluence 「03 개발 환경」에 둔다.
-- 헤드리스 시험·Windows 내보내기는 처음에는 맥에서, Home1 합류 뒤에는 WSL 에서도 한다. Windows 실행 확인은 Home1 모니터에서 한다(exe 를
-  공용 폴더로 복사해 모니터에 로그인된 계정에서 실행).
+- 원격: GitHub `Jaewon94/runefold`(**공개**, 2026-10-22 전환). CI 는 GitHub 호스팅 러너(공개 저장소 무료)이고 main 은 시험(`gut`) 통과가 병합 조건이다.
+- M0 는 맥에서 로컬 Godot 로 시작한다(2026-10-21 결정). Home1 합류 일정과 환경 구성 상세는 Confluence 「03 개발 환경」 참조.
 - 시스템 설치 없이 사용자 폴더 안 포터블 실행 파일만 쓴다. 회사 자료 경로는 건드리지 않는다.
 - Godot 설치 기록(2026-10-21): `4.7.2.stable.official.ed1daf0bf`, 맥 사용자 폴더 `~/tools/godot/4.7.2`, 출처 https://github.com/godotengine/godot-builds/releases/tag/4.7.2-stable. `Godot_v4.7.2-stable_macos.universal.zip` 의 SHA-512 가 같은 릴리스의 `SHA512-SUMS.txt` 와 일치(별도 서명은 확인하지 않음). 시험 도구는 GUT 9.7.1(CI 가 사용 중), 언어는 GDScript(C# 은 .NET SDK 가 필요해 보류).
 - 헤드리스 시험·Windows 내보내기는 Godot 4.5 이후 Wine 이 필요 없어 맥에서 바로 한다.
-- `game-dev` 의 WSL 은 마지막 `wsl.exe` 세션이 끝나고 15초 뒤 꺼진다(WSL 2.4.11.0). 상시 가동에는 관리자 예약 작업이 필요하다(RUNE-69, 보류).
 - 이진 에셋이 늘면 git LFS 도입을 검토한다.
 
 ## 아직 정해지지 않은 것
@@ -98,11 +92,21 @@
 ## 저장소 구성
 
 ```
-README.md        이 문서
-docs/design.md   게임 설계 사본(정본은 Confluence 01 게임 설계)
-docs/roadmap.md  출시 로드맵 사본(정본은 Confluence 04 출시 로드맵)
-docs/paper-prototype.md  종이 프로토타입 규칙·카드·시나리오(정본은 Confluence 05)
-docs/platform-direction.md  플랫폼 방향 검토(웹 우선, 도집사 연동)
-docs/egm-trial.md, docs/harness2-plan.md  EGM 시험 사전 등록, Harness² 준비 계획
-docs/reference-research/  참고작 1단계 공개 자료 조사(우리 말 요약, Jira RUNE-8)
+README.md                      이 문서
+docs/design.md                 게임 설계 사본(정본은 Confluence 01 게임 설계)
+docs/roadmap.md                출시 로드맵 사본(정본은 Confluence 04 출시 로드맵)
+docs/paper-prototype.md        종이 프로토타입 규칙·카드·시나리오(정본은 Confluence 05)
+docs/platform-direction.md     플랫폼 방향 검토(웹 우선, 도집사 연동)
+docs/egm-trial.md              EGM 시험 사전 등록
+docs/egm-trial-result.md       EGM 1차 시험 결과
+docs/egm-trial-2-result.md     EGM 2차 시험 결과
+docs/harness2-plan.md          Harness² 준비 계획
+docs/difficulty-plan.md        난이도 설계 계획
+docs/job-tree-plan.md          직업 트리 설계 계획
+docs/roster-plan.md            명단(로스터) 설계 계획
+docs/resolution-mockup.md      해상도 목업
+docs/asset-sources.md          에셋 출처 목록
+docs/third-party.md            서드파티 라이브러리 목록
+docs/assets/                   에셋 파일
+docs/reference-research/       참고작 1단계 공개 자료 조사(우리 말 요약, Jira RUNE-8)
 ```
